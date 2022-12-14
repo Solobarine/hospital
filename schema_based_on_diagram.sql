@@ -1,3 +1,12 @@
+-- Drop the tables if they exist 
+DROP TABLE IF EXISTS patients CASCADE;
+DROP TABLE IF EXISTS medical_histories CASCADE;
+DROP TABLE IF EXISTS treatments CASCADE;
+DROP TABLE IF EXISTS treatment_histories;
+DROP TABLE IF EXISTS invoices CASCADE;
+DROP TABLE IF EXISTS invoice_items;
+
+-- Create the main tables
 CREATE TABLE medical_histories ( id INT GENERATED ALWAYS AS IDENTITY, admitted_at DATE, patient_id INT, status varchar(30), PRIMARY KEY(id));
 CREATE TABLE patients ( id INT GENERATED ALWAYS AS IDENTITY, name VARCHAR(100), date_of_birth DATE, PRIMARY KEY(id));
 CREATE TABLE invoices ( id INT GENERATED ALWAYS AS IDENTITY, total_amount FLOAT, generated_at DATE, payed_at DATE, medical_history_id INT, PRIMARY KEY (id));
